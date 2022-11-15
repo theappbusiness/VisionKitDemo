@@ -9,6 +9,8 @@ import UIKit
 import VisionKit
 import Vision
 
+
+@available(iOS 16.0, *)
 class ViewController: UIViewController {
 
 	@IBOutlet var scanImageView: UIImageView!
@@ -17,10 +19,24 @@ class ViewController: UIViewController {
 	@IBOutlet var scanButton: UIButton!
 	var ocrRequest = VNRecognizeTextRequest(completionHandler: nil)
 
+
+	//live text
+	private lazy var interaction: ImageAnalysisInteraction = {
+		let interaction = ImageAnalysisInteraction()
+		interaction.preferredInteractionTypes = .automatic
+		return interaction
+	}()
+
+	private let imageAnalyzer = ImageAnalyzer()
+
+	var scanLiveText = false
+
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		// Do any additional setup after loading the view.
+
 		configureOCR()
+		scanImageView.addInteraction(interaction)
 	}
 
 
@@ -38,6 +54,11 @@ class ViewController: UIViewController {
 		scanDocument()
 	}
 
+
+	@IBAction func scanForLiveText(_ sender: Any) {
+		scanLiveText = true
+		scanDocument()
+	}
 
 	@objc private func scanDocument() {
 		let scanVC = VNDocumentCameraViewController()
@@ -86,19 +107,48 @@ class ViewController: UIViewController {
 	}
 
 
+	//livetext API
+	private func showLiveText() {
+		guard let image = scanImageView.image else {
+			return
+		}
+
+		Task {
+			let configuration = ImageAnalyzer.Configuration([.text])
+
+			do {
+				let analysis = try await imageAnalyzer.analyze(image, configuration: configuration)
+
+				DispatchQueue.main.async {
+					self.interaction.analysis = analysis
+					self.interaction.preferredInteractionTypes = .automatic
+				}
+
+			} catch {
+				print(error.localizedDescription)
+			}
+		}
+	}
 
 }
 
 
+
+@available(iOS 16.0, *)
 extension ViewController: VNDocumentCameraViewControllerDelegate {
 	func documentCameraViewController(_ controller: VNDocumentCameraViewController, didFinishWith scan: VNDocumentCameraScan) {
 		guard scan.pageCount >= 1 else {
 			controller.dismiss(animated: true)
 			return
 		}
-
 		scanImageView.image = scan.imageOfPage(at: 0)
-		processImage(scan.imageOfPage(at: 0))
+		if scanLiveText == true {
+			showLiveText()
+
+		} else {
+			processImage(scan.imageOfPage(at: 0))
+		}
+		scanLiveText = false
 		controller.dismiss(animated: true)
 }
 	func documentCameraViewControllerDidCancel(_ controller: VNDocumentCameraViewController) {

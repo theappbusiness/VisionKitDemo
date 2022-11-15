@@ -7,3 +7,5 @@ It has support for OCR (Optical Character Recognition), which allows you to dete
 In this repo we will see how to:
 - Scan an image/document.
 - Extract the text from the scanned document and display it in a textView.
+
+
