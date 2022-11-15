@@ -113,3 +113,65 @@ The function  `processImage` is where we create an instance of type `VNImageRequ
 
 This function will be called at the end of the `documentCameraViewController (_ controller: VNDocumentCameraViewController, didFinishWith scan: VNDocumentCameraScan)`
  method and just before dismissing the controller.
+
+
+
+
+**Using VisionKit's LiveText API** <br>
+The classes that need to be used are `ImageAnalyzer` and `ImageAnalysisInteraction`.
+
+`ImageAnalyzer` - finds items in images that the user can interact with, such as text and QR codes.
+`ImageAnalysisInteraction` - Will provide a A Live Text interaction for a view that contains an image.
+
+We first need to define these objects.
+
+```
+private lazy var interaction: ImageAnalysisInteraction = {
+    let interaction = ImageAnalysisInteraction()
+    interaction.preferredInteractionTypes = .automatic
+    return interaction
+}()
+
+private let imageAnalyzer = ImageAnalyzer()
+
+```
+
+In `viewDidLoad` we set up the interaction with the imageView.
+
+```
+override func viewDidLoad() {
+    super.viewDidLoad()
+
+    imageView.addInteraction(interaction)
+}
+```
+
+We need to use `VNDocumentCameraViewController` to get the image. Once we have the image we can run the below code to show the live text on the image.
+
+
+```
+	private func showLiveText() {
+		guard let image = scanImageView.image else {
+			return
+		}
+
+		Task {
+			let configuration = ImageAnalyzer.Configuration([.text])
+
+			do {
+				let analysis = try await imageAnalyzer.analyze(image, configuration: configuration)
+
+				DispatchQueue.main.async {
+					self.interaction.analysis = analysis
+					self.interaction.preferredInteractionTypes = .automatic
+				}
+
+			} catch {
+				print(error.localizedDescription)
+			}
+		}
+	}
+	
+```
+
+
