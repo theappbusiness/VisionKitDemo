@@ -35,7 +35,7 @@ https://user-images.githubusercontent.com/38100299/201903115-5f8bfffa-9421-4483-
 
 
 
-**Using VisionKit and Vision**
+**Using VisionKit and Vision** <br>
 `VNDocumentCameraViewController` is used to scan the document. We also need to implement its delegates `VNDocumentCameraViewControllerDelegate`
 
 `func documentCameraViewController(_ controller: VNDocumentCameraViewController, didFinishWith scan: VNDocumentCameraScan)` 
