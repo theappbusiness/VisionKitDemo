@@ -41,22 +41,23 @@ class ViewController: UIViewController {
 
 
 	func displayScanningController() {
-			guard VNDocumentCameraViewController.isSupported else { return }
+		guard VNDocumentCameraViewController.isSupported else { return }
 
-			let controller = VNDocumentCameraViewController()
-			controller.delegate = self
+		let controller = VNDocumentCameraViewController()
+		controller.delegate = self
 
-			present(controller, animated: true)
-		}
+		present(controller, animated: true)
+	}
 
 
-	@IBAction func scanDocument(_ sender: Any) {
+	@IBAction private func scanDocument(_ sender: Any) {
 		scanDocument()
 	}
 
 
-	@IBAction func scanForLiveText(_ sender: Any) {
+	@IBAction private func scanForLiveText(_ sender: Any) {
 		scanLiveText = true
+		ocrTextView.text = ""
 		scanDocument()
 	}
 
@@ -150,7 +151,7 @@ extension ViewController: VNDocumentCameraViewControllerDelegate {
 		}
 		scanLiveText = false
 		controller.dismiss(animated: true)
-}
+	}
 	func documentCameraViewControllerDidCancel(_ controller: VNDocumentCameraViewController) {
 		dismiss(animated: true, completion: nil)
 	}
