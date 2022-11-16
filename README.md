@@ -6,8 +6,8 @@ It has support for OCR (Optical Character Recognition), which can detect and rec
 
 In this repo we will see how to:
 - Scan, recognize & extract the text from the scanned document  (using Vision framework) and display it in a textView.
-Click [here](https://github.com/theappbusiness/VisionKitDemo/edit/main/README.md#using-visionkit-and-vision-) to go to this section. 
-- Explore the LiveText API introduced in iOS 16. This API can recognise any image taken from a camera on the iPhone and grab the data. (You will need Xocde 14 to run this) Click [here](https://github.com/theappbusiness/VisionKitDemo/edit/main/README.md#using-visionkits-livetext-api-) to go to this section. 
+Click [here](https://github.com/theappbusiness/VisionKitDemo#using-visionkit-and-vision-) to go to this section. 
+- Explore the LiveText API introduced in iOS 16. This API can recognise any image taken from a camera on the iPhone and grab the data. (You will need Xocde 14 to run this) Click [here](https://github.com/theappbusiness/VisionKitDemo#using-visionkits-livetext-api-) to go to this section. 
 
 
 
