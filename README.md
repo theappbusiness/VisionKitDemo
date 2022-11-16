@@ -1,41 +1,21 @@
-# VisionKitDemo
+# VisionKit
 
 **VisionKit** is a framework Apple introduced in iOS 13 that lets your app use the system’s document scanner to scan documents or papers.
 
 It has support for OCR (Optical Character Recognition), which can detect and recognise text on scanned documents.
 
 In this repo we will see how to:
-- Scan an image/document.
-- Recognize & extract the text from the scanned document  (using Vision framework) and display it in a textView.
-- Explore the LiveText API introduced in iOS 16. This API can recognise any image taken from a camera on the iPhone and grab the data. (You will need Xocde 14 to run this)
-
-
-<table>
-<tr>
-<td>
-
-Using Vision
-
-https://user-images.githubusercontent.com/38100299/201903075-5b61b70d-37f9-47eb-bb98-f75a8235c7d2.mov
-
-</td>
-
-<td>
-
-Using LiveText API
-
-https://user-images.githubusercontent.com/38100299/201903115-5f8bfffa-9421-4483-ba0d-308371c2a3a1.MP4
-
-
-</td>
-</tr>
-
-</table>
+- Scan, recognize & extract the text from the scanned document  (using Vision framework) and display it in a textView.
+Click [here](https://github.com/theappbusiness/VisionKitDemo/edit/main/README.md#using-visionkit-and-vision-) to go to this section. 
+- Explore the LiveText API introduced in iOS 16. This API can recognise any image taken from a camera on the iPhone and grab the data. (You will need Xocde 14 to run this) Click [here](https://github.com/theappbusiness/VisionKitDemo/edit/main/README.md#using-visionkits-livetext-api-) to go to this section. 
 
 
 
 
-**Using VisionKit and Vision** <br>
+
+
+# Using VisionKit and Vision <br>
+## Scan the Document
 `VNDocumentCameraViewController` is used to scan the document. We also need to implement its delegates `VNDocumentCameraViewControllerDelegate`
 
 `func documentCameraViewController(_ controller: VNDocumentCameraViewController, didFinishWith scan: VNDocumentCameraScan)` 
@@ -48,7 +28,7 @@ https://user-images.githubusercontent.com/38100299/201903115-5f8bfffa-9421-4483-
 - is called when the Cancel button of the VNDocumentCameraViewController controller is ttapped. And will dismiss the controller.
 
 
-
+## Recognize and extract text
 To recognize and extract the text of the documents we have scanned, we will use the Apple Vision framework. We will use the VNRecognizeTextRequest class.
 `var ocrRequest = VNRecognizeTextRequest(completionHandler: nil)`
 This class  searches and recognizes the text in an image.
@@ -114,10 +94,14 @@ The function  `processImage` is where we create an instance of type `VNImageRequ
 This function will be called at the end of the `documentCameraViewController (_ controller: VNDocumentCameraViewController, didFinishWith scan: VNDocumentCameraScan)`
  method and just before dismissing the controller.
 
+The result will look as below:
+
+https://user-images.githubusercontent.com/38100299/201903075-5b61b70d-37f9-47eb-bb98-f75a8235c7d2.mov
 
 
 
-**Using VisionKit's LiveText API** <br>
+
+# Using VisionKit's LiveText API <br>
 The classes that need to be used are `ImageAnalyzer` and `ImageAnalysisInteraction`.
 
 `ImageAnalyzer` - finds items in images that the user can interact with, such as text and QR codes.
@@ -174,4 +158,7 @@ We need to use `VNDocumentCameraViewController` to get the image. Once we have t
 	
 ```
 
+The result will look as below:
+
+https://user-images.githubusercontent.com/38100299/201903115-5f8bfffa-9421-4483-ba0d-308371c2a3a1.MP4
 
