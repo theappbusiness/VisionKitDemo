@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		4606F9E329229A5D0069A485 /* LiveTextViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4606F9E229229A5D0069A485 /* LiveTextViewController.swift */; };
 		46A1F9DF291555F200EE64F8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46A1F9DE291555F200EE64F8 /* AppDelegate.swift */; };
 		46A1F9E1291555F200EE64F8 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46A1F9E0291555F200EE64F8 /* SceneDelegate.swift */; };
 		46A1F9E3291555F200EE64F8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46A1F9E2291555F200EE64F8 /* ViewController.swift */; };
@@ -37,7 +36,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		4606F9E229229A5D0069A485 /* LiveTextViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveTextViewController.swift; sourceTree = "<group>"; };
 		46A1F9DB291555F200EE64F8 /* VisionKitDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VisionKitDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		46A1F9DE291555F200EE64F8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		46A1F9E0291555F200EE64F8 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -104,7 +102,6 @@
 				46A1F9DE291555F200EE64F8 /* AppDelegate.swift */,
 				46A1F9E0291555F200EE64F8 /* SceneDelegate.swift */,
 				46A1F9E2291555F200EE64F8 /* ViewController.swift */,
-				4606F9E229229A5D0069A485 /* LiveTextViewController.swift */,
 				46A1F9E4291555F200EE64F8 /* Main.storyboard */,
 				46A1F9E7291555F400EE64F8 /* Assets.xcassets */,
 				46A1F9E9291555F400EE64F8 /* LaunchScreen.storyboard */,
@@ -264,7 +261,6 @@
 				46A1F9E3291555F200EE64F8 /* ViewController.swift in Sources */,
 				46A1F9DF291555F200EE64F8 /* AppDelegate.swift in Sources */,
 				46A1F9E1291555F200EE64F8 /* SceneDelegate.swift in Sources */,
-				4606F9E329229A5D0069A485 /* LiveTextViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
