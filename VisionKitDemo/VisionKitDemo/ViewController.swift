@@ -10,7 +10,7 @@ import VisionKit
 import Vision
 
 
-@available(iOS 16.0, *)
+
 class ViewController: UIViewController {
 
 	@IBOutlet var scanImageView: UIImageView!
@@ -135,7 +135,6 @@ class ViewController: UIViewController {
 
 
 
-@available(iOS 16.0, *)
 extension ViewController: VNDocumentCameraViewControllerDelegate {
 	func documentCameraViewController(_ controller: VNDocumentCameraViewController, didFinishWith scan: VNDocumentCameraScan) {
 		guard scan.pageCount >= 1 else {
